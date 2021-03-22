@@ -21,8 +21,8 @@ I will try to decompile IOBluetoothFamily first, though it is very large. From d
 - [ ] IOBluetoothRFCOMMConnectionUserClient.h
 - [ ] IOBluetoothDataQueue.h
 - [ ] IOWorkQueue.h
-- [ ] IOBluetoothMemoryBlock.h
-- [ ] IOBluetoothMemoryBlockQueue.h
+- [x] IOBluetoothMemoryBlock.h
+- [x] IOBluetoothMemoryBlockQueue.h
 - [ ] IOBluetoothHostController.h
 - [ ] IOBluetoothHostControllerUserClient.h
 - [ ] BroadcomBluetoothHostController.h
