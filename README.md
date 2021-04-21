@@ -4,6 +4,8 @@ Decompilation of Apple's IOBluetoothFamily (specifically macOS 10.15.7) for simp
 # Status
 Tackling 1-3 class everyday, based on the amount of functions/variables they have.
 
+Finish IOBluetoothHostControllerUSBTransport.
+
 # TO-DO
 I will try to decompile IOBluetoothFamily first, though it is very large. From decompilation I observed that there are 27 files in total, specifically:
 - [ ] IOBluetoothHCIController.h
