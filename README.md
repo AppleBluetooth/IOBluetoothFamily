@@ -6,6 +6,8 @@ Tackling 1-3 class everyday, based on the amount of functions/variables they hav
 
 Finish IOBluetoothHostControllerUSBTransport.
 
+The headers are all successfully derived and placed into my fork of MacKernelSDK. Potential source code is to be put into this repository.
+
 # TO-DO
 I will try to decompile IOBluetoothFamily first, though it is very large. From decompilation I observed that there are 27 files in total, specifically:
 - [ ] IOBluetoothHCIController.h
