@@ -1,5 +1,5 @@
 # IOBluetoothFamily
-Decompilation of Apple's IOBluetoothFamily (specifically macOS 10.15.7) for simplifying Bluetooth kernel development.
+Decompilation of Apple's IOBluetoothFamily (specifically macOS 11.3) for simplifying Bluetooth kernel development.
 
 # Status
 Tackling 1-3 class everyday, based on the amount of functions/variables they have.
