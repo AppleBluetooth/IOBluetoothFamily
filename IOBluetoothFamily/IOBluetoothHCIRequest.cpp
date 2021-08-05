@@ -278,9 +278,9 @@ IOReturn IOBluetoothHCIRequest::Start()
     }
     
     clock_interval_to_deadline(mTimeout / 0x3E8 + 1, 1000000000, &time);
-    OSAddAtomic16(1, &mHostController->mControllerOutstandingCalls);
+    OSAddAtomic16(1, (SInt16 *) &mHostController->mControllerOutstandingCalls);
     result = mCommandGate->commandSleep(this, time, THREAD_UNINT);
-    OSAddAtomic16(0xFFFFFFFF, &mHostController->mControllerOutstandingCalls);
+    OSAddAtomic16(0xFFFFFFFF, (SInt16 *) &mHostController->mControllerOutstandingCalls);
     
     switch ( result )
     {
