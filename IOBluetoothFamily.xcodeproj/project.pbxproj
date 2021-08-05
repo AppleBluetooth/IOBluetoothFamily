@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC93F55126BBC1270070D30A /* IOBluetoothFamily.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F55026BBC1270070D30A /* IOBluetoothFamily.cpp */; };
+		BC93F56526BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F55E26BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp */; };
+		BC93F56626BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F55F26BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp */; };
+		BC93F56726BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F56026BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp */; };
+		BC93F56926BBC17B0070D30A /* IOBluetoothHCIRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F56226BBC17B0070D30A /* IOBluetoothHCIRequest.cpp */; };
+		BC93F56A26BBC17B0070D30A /* IOBluetoothHostController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F56326BBC17B0070D30A /* IOBluetoothHostController.cpp */; };
+		BC93F57E26BBC36A0070D30A /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC93F57D26BBC3690070D30A /* libkmod.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BC93F54B26BBC1270070D30A /* IOBluetoothFamily.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOBluetoothFamily.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC93F55026BBC1270070D30A /* IOBluetoothFamily.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothFamily.cpp; sourceTree = "<group>"; };
+		BC93F55226BBC1270070D30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC93F55A26BBC1590070D30A /* MacKernelSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MacKernelSDK; sourceTree = "<group>"; };
+		BC93F55C26BBC17B0070D30A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BC93F55E26BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostControllerUARTTransport.cpp; sourceTree = "<group>"; };
+		BC93F55F26BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostControllerUSBTransport.cpp; sourceTree = "<group>"; };
+		BC93F56026BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostControllerTransport.cpp; sourceTree = "<group>"; };
+		BC93F56126BBC17B0070D30A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BC93F56226BBC17B0070D30A /* IOBluetoothHCIRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHCIRequest.cpp; sourceTree = "<group>"; };
+		BC93F56326BBC17B0070D30A /* IOBluetoothHostController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostController.cpp; sourceTree = "<group>"; };
+		BC93F57D26BBC3690070D30A /* libkmod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkmod.a; path = MacKernelSDK/Library/x86_64/libkmod.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC93F54826BBC1270070D30A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC93F57E26BBC36A0070D30A /* libkmod.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC93F54126BBC1270070D30A = {
+			isa = PBXGroup;
+			children = (
+				BC93F55A26BBC1590070D30A /* MacKernelSDK */,
+				BC93F54D26BBC1270070D30A /* IOBluetoothFamily */,
+				BC93F55C26BBC17B0070D30A /* README.md */,
+				BC93F56126BBC17B0070D30A /* LICENSE */,
+				BC93F54C26BBC1270070D30A /* Products */,
+				BC93F57C26BBC3690070D30A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC93F54C26BBC1270070D30A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC93F54B26BBC1270070D30A /* IOBluetoothFamily.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC93F54D26BBC1270070D30A /* IOBluetoothFamily */ = {
+			isa = PBXGroup;
+			children = (
+				BC93F55D26BBC17B0070D30A /* transport */,
+				BC93F56226BBC17B0070D30A /* IOBluetoothHCIRequest.cpp */,
+				BC93F56326BBC17B0070D30A /* IOBluetoothHostController.cpp */,
+				BC93F55026BBC1270070D30A /* IOBluetoothFamily.cpp */,
+				BC93F55226BBC1270070D30A /* Info.plist */,
+			);
+			path = IOBluetoothFamily;
+			sourceTree = "<group>";
+		};
+		BC93F55D26BBC17B0070D30A /* transport */ = {
+			isa = PBXGroup;
+			children = (
+				BC93F55E26BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp */,
+				BC93F55F26BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp */,
+				BC93F56026BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp */,
+			);
+			path = transport;
+			sourceTree = "<group>";
+		};
+		BC93F57C26BBC3690070D30A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC93F57D26BBC3690070D30A /* libkmod.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BC93F54626BBC1270070D30A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BC93F54A26BBC1270070D30A /* IOBluetoothFamily */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC93F55526BBC1270070D30A /* Build configuration list for PBXNativeTarget "IOBluetoothFamily" */;
+			buildPhases = (
+				BC93F54626BBC1270070D30A /* Headers */,
+				BC93F54726BBC1270070D30A /* Sources */,
+				BC93F54826BBC1270070D30A /* Frameworks */,
+				BC93F54926BBC1270070D30A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IOBluetoothFamily;
+			productName = IOBluetoothFamily;
+			productReference = BC93F54B26BBC1270070D30A /* IOBluetoothFamily.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC93F54226BBC1270070D30A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					BC93F54A26BBC1270070D30A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = BC93F54526BBC1270070D30A /* Build configuration list for PBXProject "IOBluetoothFamily" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC93F54126BBC1270070D30A;
+			productRefGroup = BC93F54C26BBC1270070D30A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC93F54A26BBC1270070D30A /* IOBluetoothFamily */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC93F54926BBC1270070D30A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC93F54726BBC1270070D30A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC93F56926BBC17B0070D30A /* IOBluetoothHCIRequest.cpp in Sources */,
+				BC93F56726BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp in Sources */,
+				BC93F56526BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp in Sources */,
+				BC93F55126BBC1270070D30A /* IOBluetoothFamily.cpp in Sources */,
+				BC93F56A26BBC17B0070D30A /* IOBluetoothHostController.cpp in Sources */,
+				BC93F56626BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BC93F55326BBC1270070D30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BC93F55426BBC1270070D30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC93F55626BBC1270070D30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IOBluetoothFamily/Info.plist;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULE_NAME = com.apple.IOBluetoothFamily;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.IOBluetoothFamily;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		BC93F55726BBC1270070D30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IOBluetoothFamily/Info.plist;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULE_NAME = com.apple.IOBluetoothFamily;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.IOBluetoothFamily;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC93F54526BBC1270070D30A /* Build configuration list for PBXProject "IOBluetoothFamily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC93F55326BBC1270070D30A /* Debug */,
+				BC93F55426BBC1270070D30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC93F55526BBC1270070D30A /* Build configuration list for PBXNativeTarget "IOBluetoothFamily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC93F55626BBC1270070D30A /* Debug */,
+				BC93F55726BBC1270070D30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC93F54226BBC1270070D30A /* Project object */;
+}
