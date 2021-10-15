@@ -795,9 +795,9 @@ IOReturn IOBluetoothHostControllerUSBTransport::HardReset()
         *(_QWORD *)(*(_QWORD *)(this + 136) + 472LL) = *(_QWORD *)(this + 328);
     }
     
-    if ( mBluetoothUSBProviderDevice )
+    if ( mBluetoothUSBHub )
     {
-        mBluetoothUSBProviderDevice->retain();
+        mBluetoothUSBHub->retain();
         *(_QWORD *)(*(_QWORD *)(this + 136) + 480LL) = *(_QWORD *)(this + 336);
     }
     
@@ -1366,12 +1366,12 @@ bool IOBluetoothHostControllerUSBTransport::ConfigurePM(IOService * policyMaker)
         if ( provider )
         {
             device = OSDynamicCast(IOUSBHostDevice, provider);
-            mBluetoothUSBProviderDevice = device;
+            mBluetoothUSBHub = device;
             if ( device )
             {
                 device->retain();
                 mProviderDeviceStarted = true;
-                mBluetoothUSBProviderDevice->setProperties(dict);
+                mBluetoothUSBHub->setProperties(dict);
             }
         }
         OSSafeReleaseNULL(dict);
@@ -1379,7 +1379,7 @@ bool IOBluetoothHostControllerUSBTransport::ConfigurePM(IOService * policyMaker)
     }
     
     if ( provider->getProvider()->getProvider() )
-        mBluetoothUSBProviderDevice = OSDynamicCast(IOUSBHostDevice, provider->getProvider()->getProvider());
+        mBluetoothUSBHub = OSDynamicCast(IOUSBHostDevice, provider->getProvider()->getProvider());
         
 CONFIG_PM:
     if ( !pm_vars )

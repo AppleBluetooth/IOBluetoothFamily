@@ -1004,3 +1004,231 @@ LABEL_20:
     while ( !var2 );
      */
 }
+
+IOReturn IOBluetoothHCIController::SwitchToSelectedHostController(UInt32 locationID)
+{
+  __int64 v5; // r12
+  __int64 v6; // r14
+  __int64 v7; // r15
+  __int64 v8; // rdi
+  char *v9; // rax
+  char *v10; // rbx
+  unsigned int v11; // eax
+  char *v12; // rax
+  char *v13; // rbx
+  size_t v14; // rax
+  __int64 result; // rax
+  __int64 v16; // rdi
+  char *v17; // rax
+  char *v18; // rbx
+  char *v19; // rax
+  char *v20; // rbx
+  unsigned int v21; // [rsp+Ch] [rbp-154h]
+  __int64 v22; // [rsp+10h] [rbp-150h]
+  __int64 v23; // [rsp+18h] [rbp-148h]
+  __int64 v24; // [rsp+20h] [rbp-140h]
+  __int64 v25; // [rsp+28h] [rbp-138h]
+  __int64 v26; // [rsp+30h] [rbp-130h]
+  __int64 v27; // [rsp+38h] [rbp-128h]
+  __int64 v28; // [rsp+40h] [rbp-120h]
+  __int64 v29; // [rsp+48h] [rbp-118h]
+  __int64 v30; // [rsp+50h] [rbp-110h]
+  __int64 v31; // [rsp+58h] [rbp-108h]
+  __int64 v32; // [rsp+60h] [rbp-100h]
+  __int64 v33; // [rsp+68h] [rbp-F8h]
+  int v34; // [rsp+70h] [rbp-F0h]
+  __int64 v35; // [rsp+80h] [rbp-E0h]
+  __int64 v36; // [rsp+88h] [rbp-D8h]
+  __int64 v37; // [rsp+90h] [rbp-D0h]
+  __int64 v38; // [rsp+98h] [rbp-C8h]
+  __int64 v39; // [rsp+A0h] [rbp-C0h]
+  __int64 v40; // [rsp+A8h] [rbp-B8h]
+  __int16 v41; // [rsp+B0h] [rbp-B0h]
+  __int64 v42; // [rsp+C0h] [rbp-A0h]
+  __int64 v43; // [rsp+C8h] [rbp-98h]
+  __int64 v44; // [rsp+D0h] [rbp-90h]
+  __int64 v45; // [rsp+D8h] [rbp-88h]
+  __int64 v46; // [rsp+E0h] [rbp-80h]
+  __int64 v47; // [rsp+E8h] [rbp-78h]
+  __int64 v48; // [rsp+F0h] [rbp-70h]
+  __int64 v49; // [rsp+F8h] [rbp-68h]
+  __int64 v50; // [rsp+100h] [rbp-60h]
+  __int64 v51; // [rsp+108h] [rbp-58h]
+  __int64 v52; // [rsp+110h] [rbp-50h]
+  __int64 v53; // [rsp+118h] [rbp-48h]
+  int v54; // [rsp+120h] [rbp-40h]
+  __int64 v55; // [rsp+130h] [rbp-30h]
+    
+    snprintf((char *)&v22, 0x64uLL, "IOBluetoothFamily::SwitchToSelectedHostController()");
+    
+    BluetoothHardwareListType * hardware;
+    
+    hardware = FindBluetoothHardware(locationID);
+    if ( !hardware )
+    {
+        os_log(mInternalOSLogObject, "**** [IOBluetoothFamily][SwitchToSelectedHostController] -- Error -- Cannot find controller with locationID (0x%x) -- this = 0x%04x ****\n", locationID, ConvertAddressToUInt32(this));
+        BluetoothFamilyLogPacket(this, 250, "No controller @ locationID (0x%x)", locationID);
+        *(_BYTE *)(this + 383) = 0;
+        return -536870208;
+    }
+    
+    if ( hardware == mActiveBluetoothHardware )
+    {
+        LODWORD(v6) = -536870208;
+        goto LABEL_14;
+    }
+    
+    *(_BYTE *)(this + 383) = 1;
+    if ( (*(unsigned int (__fastcall **)(_QWORD, _QWORD, __int64 *))(**(_QWORD **)(mActiveBluetoothHardware + 8) + 3736LL))(
+           *(_QWORD *)(mActiveBluetoothHardware + 8),
+           0LL,
+           &v22)
+      || (*(unsigned int (__fastcall **)(_QWORD, _QWORD, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                   + 3808LL))(
+           *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+           0LL,
+           &v22) )
+    {
+      goto LABEL_14;
+    }
+    (*(void (__fastcall **)(__int64, signed __int64, _QWORD, _QWORD))(*(_QWORD *)this + 1856LL))(
+      this,
+      3758227465LL,
+      0LL,
+      0LL);
+    (*(void (__fastcall **)(_QWORD, _QWORD))(***(_QWORD ***)(this + 304) + 2568LL))(**(_QWORD **)(this + 304), 0LL);
+    *(_QWORD *)(this + 304) = hardware;
+    (*(void (__fastcall **)(_QWORD, signed __int64))(**(_QWORD **)hardware + 2568LL))(*(_QWORD *)hardware, 1LL);
+    *(_QWORD *)(this + 312) = hardware;
+    if ( (*(unsigned int (__fastcall **)(_QWORD, signed __int64, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                           + 3736LL))(
+           *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+           1LL,
+           &v22) )
+    {
+      goto LABEL_6;
+    }
+    v21 = (*(__int64 (__fastcall **)(_QWORD, signed __int64, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                       + 3808LL))(
+            *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+            1LL,
+            &v22);
+    (*(void (__fastcall **)(__int64, _QWORD, __int64 *, __int64 *))(*(_QWORD *)this + 2848LL))(this, v21, &v42, &v35);
+    if ( !(*(unsigned __int8 (__fastcall **)(_QWORD, signed __int64))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                    + 2392LL))(
+            *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+            1LL) )
+    {
+      if ( !(*(unsigned int (__fastcall **)(_QWORD, _QWORD, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                      + 3736LL))(
+              *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+              0LL,
+              &v22) )
+        (*(void (__fastcall **)(_QWORD, _QWORD, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL) + 3808LL))(
+          *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+          0LL,
+          &v22);
+LABEL_6:
+      (*(void (__fastcall **)(_QWORD, _QWORD))(***(_QWORD ***)(this + 304) + 2568LL))(**(_QWORD **)(this + 304), 0LL);
+      *(_QWORD *)(this + 304) = mActiveBluetoothHardware;
+      (*(void (__fastcall **)(_QWORD, signed __int64))(**(_QWORD **)mActiveBluetoothHardware + 2568LL))(*(_QWORD *)mActiveBluetoothHardware, 1LL);
+      if ( !(*(unsigned int (__fastcall **)(_QWORD, signed __int64, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304)
+                                                                                            + 8LL)
+                                                                              + 3736LL))(
+              *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+              1LL,
+              &v22) )
+      {
+        v7 = (*(unsigned int (__fastcall **)(_QWORD, signed __int64, __int64 *))(**(_QWORD **)(*(_QWORD *)(this + 304)
+                                                                                             + 8LL)
+                                                                               + 3808LL))(
+               *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+               1LL,
+               &v22);
+        (*(void (__fastcall **)(__int64, __int64, __int64 *, __int64 *))(*(_QWORD *)this + 2848LL))(
+          this,
+          v7,
+          &v42,
+          &v35);
+        if ( (*(unsigned __int8 (__fastcall **)(_QWORD, signed __int64))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL)
+                                                                       + 2392LL))(
+               *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+               1LL) )
+        {
+          if ( *(_BYTE *)(this + 381) )
+          {
+            v8 = *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL);
+            v6 = (*(unsigned __int8 (__fastcall **)(__int64, _QWORD, _QWORD, __int64, _QWORD, _QWORD))(*(_QWORD *)this + 2408LL))(
+                   this,
+                   *(unsigned __int16 *)(v8 + 860),
+                   *(unsigned __int16 *)(v8 + 858),
+                   v8 + 868,
+                   *(unsigned int *)(v8 + 864),
+                   *(unsigned __int16 *)(v8 + 928));
+            (*(void (__fastcall **)(__int64, __int64, __int64, __int64, __int64, __int64))(*(_QWORD *)this + 2416LL))(
+              this,
+              this + 346,
+              this + 348,
+              this + 350,
+              this + 356,
+              this + 360);
+          }
+          else
+          {
+            LODWORD(v6) = -536870208;
+          }
+          v19 = (char *)IOMalloc(511LL);
+          if ( v19 )
+          {
+            v20 = v19;
+            bzero(v19, 0x1FFuLL);
+            snprintf(
+              v20,
+              0x1FFuLL,
+              "**** [IOBluetoothFamily][SwitchToSelectedHostController] -- calling ControllerSetupComplete (0x%04X (%s)) "
+              "for original controller ****\n",
+              (unsigned int)v7,
+              &v42);
+            _os_log_internal(
+              &dword_0,
+              *(_QWORD *)(this + 424),
+              0LL,
+              IOBluetoothHCIController::SwitchToSelectedHostController(unsigned int)::_os_log_fmt,
+              v20);
+            IOFree(v20, 511LL);
+          }
+          (*(void (__fastcall **)(_QWORD, _QWORD))(**(_QWORD **)(*(_QWORD *)(this + 304) + 8LL) + 2376LL))(
+            *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL),
+            (unsigned int)v7);
+        }
+      }
+      goto LABEL_14;
+    }
+    if ( *(_BYTE *)(this + 381) )
+    {
+      v16 = *(_QWORD *)(*(_QWORD *)(this + 304) + 8LL);
+      (*(void (__fastcall **)(__int64, _QWORD, _QWORD, __int64, _QWORD, _QWORD))(*(_QWORD *)this + 2408LL))(
+        this,
+        *(unsigned __int16 *)(v16 + 860),
+        *(unsigned __int16 *)(v16 + 858),
+        v16 + 868,
+        *(unsigned int *)(v16 + 864),
+        *(unsigned __int16 *)(v16 + 928));
+      (*(void (__fastcall **)(__int64, __int64, __int64, __int64, __int64, __int64))(*(_QWORD *)this + 2416LL))(
+        this,
+        this + 346,
+        this + 348,
+        this + 350,
+        this + 356,
+        this + 360);
+    }
+    
+    os_log(mInternalOSLogObject, "**** [IOBluetoothFamily][SwitchToSelectedHostController] -- Controller at locationID (0x%x) -- calling ControllerSetupComplete (0x%04X (%s)) ****\n", locationID, v21, &v42);
+    mActiveBluetoothHardware->mBluetoothHostController->ControllerSetupComplete(v21);
+    
+    LODWORD(v6) = 0;
+    
+LABEL_14:
+    *(_BYTE *)(this + 383) = 0;
+    return v6;
+}
