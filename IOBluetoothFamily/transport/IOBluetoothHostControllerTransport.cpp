@@ -36,7 +36,7 @@ bool IOBluetoothHostControllerTransport::init(OSDictionary * dictionary)
 {
     CreateOSLogObject();
     mProvider = NULL;
-    mPowerMask = 0;
+    mControllerVendorType = 0;
     mWorkLoop = NULL;
     mCommandGate = NULL;
     mBluetoothFamily = NULL;
@@ -424,7 +424,7 @@ IOReturn IOBluetoothHostControllerTransport::CallConfigPM()
     {
         for (UInt8 i = 0; i < 5; ++i)
         {
-            if ( (mPowerMask & 0xFFFE) != 6 || mACPIMethods )
+            if ( (mControllerVendorType & 0xFFFE) != 6 || mACPIMethods )
                 break;
             CheckACPIMethodsAvailabilities();
             
@@ -479,7 +479,7 @@ IOReturn IOBluetoothHostControllerTransport::setPowerState(unsigned long powerSt
         powerStateOrdinal = 2;
         return mCommandGate->runAction(IOBluetoothHostControllerTransport::setPowerStateAction, &powerStateOrdinal, &whatDevice);
     }
-    if ( (mPowerMask & 0xFFFE) != 6 )
+    if ( (mControllerVendorType & 0xFFFE) != 6 )
     {
         if ( powerStateOrdinal == 1 )
         {
@@ -683,16 +683,16 @@ IOReturn IOBluetoothHostControllerTransport::powerStateWillChangeTo(IOPMPowerFla
     {
         os_log(mInternalOSLogObject, "**** [IOBluetoothHostControllerTransport][powerStateWillChangeTo] -- System Sleep -- SleepType is %s ****\n", gPowerManagerSleepTypeString[mSleepType]);
         BluetoothFamilyLogPacket(mBluetoothFamily, 251, "System Sleep");
-        *(UInt8 *)(mBluetoothController + 897) = 0;
+        mBluetoothController->mTransportPowerOn = false;
         if ( *(UInt8 *)(mBluetoothFamily + 454) )
         {
-            *(UInt8 *)(mBluetoothFamily + 455) = 1;
-            *(UInt8 *)(mBluetoothController + 889) = *(UInt8 *)(mBluetoothController + 1307);
+            mBluetoothFamily->mTestNoHardResetWhenSleepCommandTimeout = true;
+            mBluetoothController->mNumberOfTimedOutHCICommands = mBluetoothController->mAllowedNumberOfTimedOutHCICommands;
         }
         mSystemOnTheWayToSleep = 1;
         *(UInt8 *)(mBluetoothController + 967) = 0;
         mBluetoothController->PerformTaskForPowerManagementCalls(-536870272);
-        if ( *(UInt32 *)(mBluetoothController + 1276LL) )
+        if ( *(UInt32 *)(mBluetoothController + 1276) )
             result = mCommandGate->runAction(IOBluetoothHostControllerTransport::powerStateWillChangeToAction, (void *) -536870272);
         else
             mCurrentPMMethod = 2;
@@ -705,15 +705,15 @@ IOReturn IOBluetoothHostControllerTransport::powerStateWillChangeTo(IOPMPowerFla
             BluetoothFamilyLogPacket(mBluetoothFamily, 251, "System Power On");
             if ( *(UInt8 *)(mBluetoothFamily + 454) )
             {
-                *(UInt8 *)(mBluetoothFamily + 455) = 0;
-                *(UInt8 *)(mBluetoothController + 889) = 0;
+                mBluetoothFamily->mTestNoHardResetWhenSleepCommandTimeout = false;
+                mBluetoothController->mNumberOfTimedOutHCICommands = 0;
             }
             if ( *(UInt8 *)(mBluetoothFamily + 457) )
-                *(UInt8 *)(mBluetoothFamily + 456) = 1;
-            *(UInt8 *)(mBluetoothController + 897LL) = 1;
-            *(UInt32 *)(mBluetoothFamily + 404) = mBluetoothFamily->GetCurrentTime();
+                mBluetoothFamily->mTestHCICommandTimeoutWhenWake = true;
+            mBluetoothController->mTransportPowerOn = true;
+            mBluetoothFamily->mActivityTickleCallTime = mBluetoothFamily->GetCurrentTime();
             *(UInt8 *)(mBluetoothController + 967) = 1;
-            *(UInt8 *)(mBluetoothController + 1297) = 0;
+            mBluetoothController->mACLPacketCausedFullWake = false;
             mBluetoothController->PerformTaskForPowerManagementCalls(-536870112);
             if ( (mConrollerTransportType & 0xFFFE) == 2 )
                 mCommandGate->runAction(IOBluetoothHostControllerTransport::powerStateWillChangeToAction, (void *) -536870112);
@@ -757,7 +757,7 @@ IOReturn IOBluetoothHostControllerTransport::powerStateWillChangeToWL(IOOptionBi
     mSystemOnTheWayToSleep = false;
     *(UInt8 *)(mBluetoothController + 967) = 1;
     
-    if ( (mPowerMask & 0xFFFE) != 6 )
+    if ( (mControllerVendorType & 0xFFFE) != 6 )
     {
         if ( ((mSleepType == 5 && mBluetoothFamily->isSystemPortable()) || mSleepType == 4 || mSleepType == 6) && mBluetoothController )
             mBluetoothController->TransportTerminating(this);
@@ -793,7 +793,7 @@ IOReturn IOBluetoothHostControllerTransport::systemWillShutdownAction(OSObject *
     if ( !transport || transport->isInactive() )
         return 0;
     
-    *(UInt32 *)(transport->mBluetoothFamily + 396) = -536870128;
+    transport->mBluetoothFamily->mTransportPowerStateOptions = -536870128;
     transport->mBluetoothController->CallKillAllPendingRequests(false, false);
     transport->mCurrentInternalPowerState = kIOBluetoothHCIControllerInternalPowerStateOff;
     transport->mCurrentPMMethod = 5;
@@ -1360,7 +1360,7 @@ SET_PROP:
         }
         
         result = 0;
-        if ( mACPIMethods && mACPIMethods->mROMBootMethodAvailable && (mPowerMask & 0xFFFE) == 6 )
+        if ( mACPIMethods && mACPIMethods->mROMBootMethodAvailable && (mControllerVendorType & 0xFFFE) == 6 )
         {
             number = OSDynamicCast(OSNumber, dict->getObject(symbol));
             if ( number && mBluetoothController )

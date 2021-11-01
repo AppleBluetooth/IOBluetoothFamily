@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC4E3FBB26E5C7BF00EA25D1 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC4E3FB926E5C7BF00EA25D1 /* test.cpp */; };
-		BC4E3FBC26E5C7BF00EA25D1 /* test.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BC4E3FBA26E5C7BF00EA25D1 /* test.hpp */; };
 		BC93F57E26BBC36A0070D30A /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC93F57D26BBC3690070D30A /* libkmod.a */; };
-		BCDE81532718E35700001E2D /* IOBluetoothHostController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F56326BBC17B0070D30A /* IOBluetoothHostController.cpp */; };
+		BCB67CBA272E115B007711DB /* IOBluetoothHostControllerUSBTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F55F26BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp */; };
+		BCB67CBB272E115B007711DB /* IOBluetoothHostControllerTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC93F56026BBC17B0070D30A /* IOBluetoothHostControllerTransport.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC3141E627211CE10056B5D3 /* MacKernelSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MacKernelSDK; path = ../../../MacKernelSDK; sourceTree = "<group>"; };
 		BC4E3FB926E5C7BF00EA25D1 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		BC4E3FBA26E5C7BF00EA25D1 /* test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = test.hpp; sourceTree = "<group>"; };
 		BC93F54B26BBC1270070D30A /* IOBluetoothFamily.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOBluetoothFamily.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC93F55026BBC1270070D30A /* IOBluetoothFamily.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothFamily.cpp; sourceTree = "<group>"; };
 		BC93F55226BBC1270070D30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC93F55A26BBC1590070D30A /* MacKernelSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MacKernelSDK; sourceTree = "<group>"; };
 		BC93F55C26BBC17B0070D30A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BC93F55E26BBC17B0070D30A /* IOBluetoothHostControllerUARTTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostControllerUARTTransport.cpp; sourceTree = "<group>"; };
 		BC93F55F26BBC17B0070D30A /* IOBluetoothHostControllerUSBTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOBluetoothHostControllerUSBTransport.cpp; sourceTree = "<group>"; };
@@ -45,7 +44,7 @@
 		BC93F54126BBC1270070D30A = {
 			isa = PBXGroup;
 			children = (
-				BC93F55A26BBC1590070D30A /* MacKernelSDK */,
+				BC3141E627211CE10056B5D3 /* MacKernelSDK */,
 				BC93F54D26BBC1270070D30A /* IOBluetoothFamily */,
 				BC93F55C26BBC17B0070D30A /* README.md */,
 				BC93F56126BBC17B0070D30A /* LICENSE */,
@@ -101,7 +100,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC4E3FBC26E5C7BF00EA25D1 /* test.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCDE81532718E35700001E2D /* IOBluetoothHostController.cpp in Sources */,
-				BC4E3FBB26E5C7BF00EA25D1 /* test.cpp in Sources */,
+				BCB67CBA272E115B007711DB /* IOBluetoothHostControllerUSBTransport.cpp in Sources */,
+				BCB67CBB272E115B007711DB /* IOBluetoothHostControllerTransport.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,10 +229,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				HEADER_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Headers;
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Headers;
+				KERNEL_FRAMEWORK_HEADERS = /Users/charliejiang/MacKernelSDK/Headers;
+				LIBRARY_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Library/x86_64;
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -288,10 +286,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				HEADER_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Headers;
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Headers;
+				KERNEL_FRAMEWORK_HEADERS = /Users/charliejiang/MacKernelSDK/Headers;
+				LIBRARY_SEARCH_PATHS = /Users/charliejiang/MacKernelSDK/Library/x86_64;
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
